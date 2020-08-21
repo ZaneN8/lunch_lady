@@ -24,8 +24,8 @@ end
 class Restarant
 
   def initialize
-    @main_dishes = [ Dish.new("spagati", 10.49), Dish.new("chicken", 13.00), Dish.new("Steak", 20.00),, Dish.new("Soup", 19.99)]
-    @side_dishes = [ Dish.new("Rice", 3.56), Dish.new("fries", 4.99), Dish.new("Veggies", 2.99), Dish.new("Chips", 1.99)]
+    @main_dishes = [ Dish.new("Spagati", 10.49), Dish.new("Chicken", 13.00), Dish.new("Steak", 20.00), Dish.new("Soup", 19.99)]
+    @side_dishes = [ Dish.new("Rice", 3.56), Dish.new("Fries", 4.99), Dish.new("Veggies", 2.99), Dish.new("Chips", 1.99)]
     @checkout_cost = []
     @what_was_ordered = []
     main_dish_menu
@@ -33,7 +33,7 @@ class Restarant
 
     def main_dish_number
        @main_dishes.each_with_index do |dish, index|
-       puts "#{index + 1}) #{dish.name} at #{dish.price}"
+       puts "#{index + 1}) #{dish.name} at $#{dish.price}"
       end
     end
 
@@ -70,7 +70,7 @@ class Restarant
     def side_dish_menu
       puts "now pick two options"
       @side_dishes.each_with_index do |dish, index|
-        puts "#{index + 1}) #{dish.name} #{dish.price}"
+        puts "#{index + 1}) #{dish.name} $#{dish.price}"
       end
       choice = gets.to_i
         case choice
@@ -127,7 +127,7 @@ class Restarant
 
     def checkout_here
       puts "You ordered #{@what_was_ordered}"
-      puts "the total is #{@checkout_cost.sum}"
+      puts "and your total is $#{@checkout_cost.sum}"
     end
 
 
