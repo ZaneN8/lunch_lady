@@ -26,40 +26,63 @@ class Restarant
   def initialize
     @main_dishes = [ Dish.new("spagati", 3.56), Dish.new("chicken", 20.00)]
     @side_dishes = [ Dish.new("rice", 3.56), Dish.new("fries", 2.00)]
-    @checkout_cost = 0
+    @checkout_cost = []
     main_dish_menu
   end
 
+    def main_dish_number
+       @main_dishes.each_with_index do |dish, index|
+       puts "#{index + 1}) #{dish.name} at #{dish.price}"
+      end
+    end
 
     def main_dish_menu
       puts "What would you like to order"
-      @main_dishes.each_with_index do |dish, index|
-        puts "#{index + 1}) #{dish.name} #{dish.price}"
-      end
+      main_dish_number
+        @main_dishes.each_with_index do |dish, index|
         choice = gets.to_i
-          case choice
-          when 1
-            puts "You ordered spaget"
-          when 2 
-            puts "you get chiclen"
-          end
-      side_dish_menu
+        case choice
+        when 1
+          puts "Ordering Spagati"
+        when 2
+          puts "lOrdering Chicken"
+        end
+      end
+      # side_dish_menu
     end
 
     def side_dish_menu
-      puts "how pick two options"
+      puts "now pick two options"
       @side_dishes.each_with_index do |dish, index|
         puts "#{index + 1}) #{dish.name} #{dish.price}"
       end
       choice = gets.to_i
         case choice
         when 1
-          "you get rice"
+          puts "you get rice"
         when 2
-          "you get fires"
+          puts "you get fires"
         end
+        side_dish_menu_two
     end
 
+    def side_dish_menu_two
+      @side_dishes.each_with_index do |dish, index|
+      end
+      choice = gets.to_i
+        case choice
+        when 1
+          puts "and you get rice"
+        when 2
+          puts "and you get fires"
+        end
+        puts "#{@checkout_cost}"
+    end
+
+    def checkout_here
+      @checkout_cost.sum
+
+    end
 
 
 end
