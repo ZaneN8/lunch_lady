@@ -24,8 +24,8 @@ end
 class Restarant
 
   def initialize
-    @main_dishes = [ Dish.new("spagati", 3.56), Dish.new("chicken", 20.00)]
-    @side_dishes = [ Dish.new("rice", 3.56), Dish.new("fries", 2.00)]
+    @main_dishes = [ Dish.new("spagati", 10.49), Dish.new("chicken", 13.00), Dish.new("Steak", 20.00),, Dish.new("Soup", 19.99)]
+    @side_dishes = [ Dish.new("Rice", 3.56), Dish.new("fries", 4.99), Dish.new("Veggies", 2.99), Dish.new("Chips", 1.99)]
     @checkout_cost = []
     @what_was_ordered = []
     main_dish_menu
@@ -43,7 +43,6 @@ class Restarant
         choice = gets.to_i
         case choice
         when 1
-          # puts "Ordering Spagati"
           puts "Your main dish is #{@main_dishes[choice - 1].name}"
           @checkout_cost << @main_dishes[choice - 1].price
           @what_was_ordered << @main_dishes[choice - 1].name
@@ -51,6 +50,17 @@ class Restarant
           puts "Your main dish is #{@main_dishes[choice - 1].name}"
           @checkout_cost << @main_dishes[choice - 1].price
           @what_was_ordered << @main_dishes[choice - 1].name
+        when 3
+          puts "Your main dish is #{@main_dishes[choice - 1].name}"
+          @checkout_cost << @main_dishes[choice - 1].price
+          @what_was_ordered << @main_dishes[choice - 1].name
+        when 4
+          puts "Your main dish is #{@main_dishes[choice - 1].name}"
+          @checkout_cost << @main_dishes[choice - 1].price
+          @what_was_ordered << @main_dishes[choice - 1].name
+        else
+          puts "Try again"
+          main_dish_menu
     end
 
       side_dish_menu
@@ -72,6 +82,17 @@ class Restarant
           puts "Your side dish is #{@side_dishes[choice - 1].name}"
           @checkout_cost << @side_dishes[choice - 1].price
           @what_was_ordered << @side_dishes[choice - 1].name
+        when 3
+          puts "Your side dish is #{@side_dishes[choice - 1].name}"
+          @checkout_cost << @side_dishes[choice - 1].price
+          @what_was_ordered << @side_dishes[choice - 1].name
+        when 4
+          puts "Your side dish is #{@side_dishes[choice - 1].name}"
+          @checkout_cost << @side_dishes[choice - 1].price
+          @what_was_ordered << @side_dishes[choice - 1].name
+        else
+          puts "Try again"
+          side_dish_menu
         end
         side_dish_menu_two
     end
@@ -89,13 +110,23 @@ class Restarant
           puts "and #{@side_dishes[choice - 1].name}"
           @checkout_cost << @side_dishes[choice - 1].price
           @what_was_ordered << @side_dishes[choice - 1].name
+        when 3
+          puts "and #{@side_dishes[choice - 1].name}"
+          @checkout_cost << @side_dishes[choice - 1].price
+          @what_was_ordered << @side_dishes[choice - 1].name
+        when 4
+          puts "and #{@side_dishes[choice - 1].name}"
+          @checkout_cost << @side_dishes[choice - 1].price
+          @what_was_ordered << @side_dishes[choice - 1].name
+        else
+          puts "Try again"
+          side_dish_menu_two
         end
       checkout_here
     end
 
     def checkout_here
       puts "You ordered #{@what_was_ordered}"
-      @checkout_cost.sum
       puts "the total is #{@checkout_cost.sum}"
     end
 
