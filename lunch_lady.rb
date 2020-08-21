@@ -27,6 +27,7 @@ class Restarant
     @main_dishes = [ Dish.new("spagati", 3.56), Dish.new("chicken", 20.00)]
     @side_dishes = [ Dish.new("rice", 3.56), Dish.new("fries", 2.00)]
     @checkout_cost = []
+    @what_was_ordered = []
     main_dish_menu
   end
 
@@ -39,16 +40,21 @@ class Restarant
     def main_dish_menu
       puts "What would you like to order"
       main_dish_number
-        @main_dishes.each_with_index do |dish, index|
         choice = gets.to_i
         case choice
         when 1
-          puts "Ordering Spagati"
+          # puts "Ordering Spagati"
+          puts "Your main dish is #{@main_dishes[choice - 1].name}"
+          @checkout_cost << @main_dishes[choice - 1].price
+          @what_was_ordered << @main_dishes[choice - 1].name
         when 2
-          puts "lOrdering Chicken"
-        end
-      end
-      # side_dish_menu
+          puts "Your main dish is #{@main_dishes[choice - 1].name}"
+          @checkout_cost << @main_dishes[choice - 1].price
+          @what_was_ordered << @main_dishes[choice - 1].name
+    end
+
+      side_dish_menu
+      
     end
 
     def side_dish_menu
@@ -59,9 +65,13 @@ class Restarant
       choice = gets.to_i
         case choice
         when 1
-          puts "you get rice"
+          puts "Your side dish is #{@side_dishes[choice - 1].name}"
+          @checkout_cost << @side_dishes[choice - 1].price
+          @what_was_ordered << @side_dishes[choice - 1].name
         when 2
-          puts "you get fires"
+          puts "Your side dish is #{@side_dishes[choice - 1].name}"
+          @checkout_cost << @side_dishes[choice - 1].price
+          @what_was_ordered << @side_dishes[choice - 1].name
         end
         side_dish_menu_two
     end
@@ -72,16 +82,21 @@ class Restarant
       choice = gets.to_i
         case choice
         when 1
-          puts "and you get rice"
+          puts "and #{@side_dishes[choice - 1].name}"
+          @checkout_cost << @side_dishes[choice - 1].price
+          @what_was_ordered << @side_dishes[choice - 1].name
         when 2
-          puts "and you get fires"
+          puts "and #{@side_dishes[choice - 1].name}"
+          @checkout_cost << @side_dishes[choice - 1].price
+          @what_was_ordered << @side_dishes[choice - 1].name
         end
-        puts "#{@checkout_cost}"
+      checkout_here
     end
 
     def checkout_here
+      puts "You ordered #{@what_was_ordered}"
       @checkout_cost.sum
-
+      puts "the total is #{@checkout_cost.sum}"
     end
 
 
