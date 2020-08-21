@@ -6,7 +6,7 @@ require_relative "restarant"
 def main_dish_menu
   puts "What would you like to order?"
   main_dish_number
-    choice = gets.to_i
+    choice = gets.chomp.to_i
     if choice > 0 && choice <= @main_dishes.length
       puts "Your main dish is #{@main_dishes[choice - 1].name}"
     else
@@ -23,7 +23,7 @@ def side_dish_menu
   @side_dishes.each_with_index do |dish, index|
     puts "#{index + 1}) #{dish.name} $#{dish.price}"
   end
-  choice = gets.to_i
+  choice = gets.chomp.to_i
     if choice > 0 && choice <= @side_dishes.length
       puts "Your main dish is #{@side_dishes[choice - 1].name}"
     else
@@ -36,7 +36,7 @@ def side_dish_menu
 end
 
 def side_dish_menu_two
-  choice = gets.to_i
+  choice = gets.chomp.to_i
       if choice > 0 && choice <= @side_dishes.length
         puts "Your main dish is #{@side_dishes[choice - 1].name}"
       else
