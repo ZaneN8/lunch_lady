@@ -7,4 +7,10 @@ class Restarant
     @what_was_ordered = []
     main_dish_menu
   end
+
+  def main_dish_number
+    @main_dishes.each_with_index do |dish, index|
+    puts "#{index + 1}) #{dish.name} at $#{dish.price}"
+    end
+  end
 end
